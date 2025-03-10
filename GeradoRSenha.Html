@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gerador de Senhas</title>
+    <style>
+      .password-controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 15px;
+      }
+      span#passwordOutput{
+        font-size: 1.em;
+        font-weight: bold;
+        margin-top: 10px;
+        background-color: blueviolet;
+        color: white;
+        padding: 5px 10px;
+
+      }
+      .length-display {
+        font-size: 1.2em;
+        font-weight: bold;
+        min-width: 30px;
+        text-align: center;
+      }
+
+      input[type="range"] {
+        width: 200px;
+      }
+
+      input[type="number"] {
+        width: 60px;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      .error-message {
+        color: red;
+        display: none;
+        font-size: 0.9em;
+        margin-top: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Gerador de Senhas</h1>
+    <form id="passwordForm">
+      <div class="password-controls">
+        <label for="length">Comprimento da Senha:</label>
+        <input
+          type="number"
+          id="length"
+          name="length"
+          min="15"
+          max="20"
+          value="20"
+          oninput="document.getElementById('lengthDisplay').innerText = this.value"
+        />
+        <span id="lengthDisplay" class="length-display">20</span>
+      </div>
+
+      <label>
+        <input type="checkbox" id="uppercase" checked /> Incluir Maiúsculas
+      </label>
+
+      <label>
+        <input type="checkbox" id="lowercase" checked /> Incluir Minúsculas
+      </label>
+
+      <label>
+        <input type="checkbox" id="numbers" checked /> Incluir Números
+      </label>
+
+      <label> <input type="checkbox" id="symbols" /> Incluir Símbolos </label>
+
+      <button type="button" onclick="generatePassword()">Gerar Senha</button>
+    </form>
+
+    <p>Senha Gerada: <span id="passwordOutput"></span></p>
+
+    <script src="GeradoRSenha.js"></script>
+  </body>
+</html>
